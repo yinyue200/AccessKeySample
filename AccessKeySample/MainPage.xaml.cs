@@ -26,5 +26,46 @@ namespace AccessKeySample
         {
             this.InitializeComponent();
         }
+        private void DoSomething(object sender, RoutedEventArgs args)
+        {
+            Frame.Navigate(typeof(BlankPage1));
+        }
+
+        private void OnAccessKeyDisplayRequested(UIElement sender, AccessKeyDisplayRequestedEventArgs args)
+        {
+            var tooltip = ToolTipService.GetToolTip(sender) as ToolTip;
+
+            if (tooltip == null)
+            {
+                tooltip = new ToolTip();
+                tooltip.Background = new SolidColorBrush(Windows.UI.Colors.Black);
+                tooltip.Foreground = new SolidColorBrush(Windows.UI.Colors.White);
+                tooltip.Padding = new Thickness(4, 4, 4, 4);
+                tooltip.VerticalOffset = -20;
+                tooltip.Placement = PlacementMode.Bottom;
+                ToolTipService.SetToolTip(sender, tooltip);
+            }
+
+            if (string.IsNullOrEmpty(args.PressedKeys))
+            {
+                tooltip.Content = sender.AccessKey;
+            }
+            else
+            {
+                tooltip.Content = sender.AccessKey.Remove(0, args.PressedKeys.Length);
+            }
+
+            tooltip.IsOpen = true;
+        }
+        private void OnAccessKeyDisplayDismissed(UIElement sender, AccessKeyDisplayDismissedEventArgs args)
+        {
+            var tooltip = ToolTipService.GetToolTip(sender) as ToolTip;
+            if (tooltip != null)
+            {
+                tooltip.IsOpen = false;
+                //Fix to avoid show tooltip with mouse
+                ToolTipService.SetToolTip(sender, null);
+            }
+        }
     }
 }
