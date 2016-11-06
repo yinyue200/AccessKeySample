@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AccessKeySample")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("基于https://msdn.microsoft.com/zh-cn/windows/uwp/input-and-devices/access-keys编写")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AccessKeySample")]
@@ -27,3 +27,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: ComVisible(false)]
+
+
+//https://msdn.microsoft.com/zh-cn/windows/uwp/debug-test-perf/version-adaptive-code
+//https://msdn.microsoft.com/windows/uwp/accessibility/keyboard-accessibility
